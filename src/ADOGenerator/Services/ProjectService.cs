@@ -2866,13 +2866,35 @@ public static class Utility
     public static string SanitizeJson(string json)
     {
         // Implement sanitization logic to remove or mask sensitive information
-        // For example, remove password fields
         var jsonObject = JObject.Parse(json);
+        
+        // Mask password fields
         if (jsonObject["password"] != null)
         {
             jsonObject["password"] = "****";
         }
+        
+        // Mask GitUserPassword fields
+        if (jsonObject["GitUserPassword"] != null)
+        {
+            jsonObject["GitUserPassword"] = "****";
+        }
+        
+        // Mask BikeSharing360password fields
+        if (jsonObject["BikeSharing360password"] != null)
+        {
+            jsonObject["BikeSharing360password"] = "****";
+        }
+        
+        // Mask ContosoPassword fields
+        if (jsonObject["ContosoPassword"] != null)
+        {
+            jsonObject["ContosoPassword"] = "****";
+        }
+        
+        // Mask other sensitive fields as needed
         // Add more sanitization logic as needed
+        
         return jsonObject.ToString();
     }
 }
